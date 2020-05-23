@@ -1,0 +1,16 @@
+{{ define "title" }}{{ if not .IsHome }}{{ .Title }}{{ end }}{{ end }}
+
+{{ define "main" }}
+  <div class="wrapper list">
+    <div class="block-heading--list full-width">
+      <div class="wrapper">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>  
+  {{ end }}
+
+{{ define "scripts" }}
+
+{{ end }}
+

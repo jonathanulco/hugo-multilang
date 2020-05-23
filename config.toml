@@ -1,0 +1,69 @@
+# Site language. Available translations in the theme's `/i18n` directory.
+defaultContentLanguage = "en"
+
+# Renders the default content language in subdir, e.g. /. The root directory / will redirect to /
+defaultContentLanguageInSubdir = "true"
+relativeURLs = "true"
+
+languageCode = "en-US"
+title = "Sandbox"
+description = "Sandbox multilang"
+
+
+[outputs]
+home = ["HTML", "RSS"]
+
+[languages]
+  [languages.en]
+    languageName ="English"
+    Lang ="en"
+    weight ="1"
+    contentDir = "content/en"
+  
+   [languages.fr]
+    languageName ="Français"
+    Lang ="fr"
+    weight ="2"
+    contentDir = "content/fr"
+
+  [[languages.en.menu.main]]
+    
+    name        = "Welcome"
+    url         = "/"
+    weight     = 1   
+  [[languages.en.menu.main]]
+    
+    name        = "Who we are"
+    url         = "/who-we-are/"
+    weight     = 2   
+  [[languages.en.menu.main]]
+    
+    name        = "What we do"
+    url         = "/what-we-do/"
+    weight     = 3  
+  [[languages.en.menu.main]]
+    
+    name        = "How to Reach Us"
+    url         = "/how-to-reach-us/"
+    weight     = 4
+
+  [[languages.fr.menu.main]]
+    
+    name        = "Bienvenue"
+    url         = "/"
+    weight     = 1     
+  [[languages.fr.menu.main]]
+    
+    name        = "Qui nous sommes"
+    url         = "/qui-nous-sommes/"
+    weight     = 2   
+  [[languages.fr.menu.main]]
+    
+    name        = "Ce que nous faisons"
+    url         = "/ce-que-nous-faisons/"
+    weight     = 3  
+  [[languages.fr.menu.main]]
+    
+    name        = "Comment nous joindre"
+    url         = "/comment-nous-joindre/"
+    weight     = 4        

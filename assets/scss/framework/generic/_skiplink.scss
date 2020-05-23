@@ -1,0 +1,37 @@
+
+//
+// Skiplink
+//
+
+/* styling skip links */
+.skip-links {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index:-1;
+  li {
+    display: flex;
+    flex-direction:row;
+    background: black;
+    color: #fff;
+  }
+  a {
+    position: absolute;
+    overflow: hidden;
+    display:block;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0.5em;
+    background: black;
+    color: #fff;
+    text-decoration: none;
+    &:focus {
+      position: static;
+      overflow: visible;
+      clip: auto;
+      z-index:9999;
+    }
+  }
+  &:focus-within {
+    z-index: 9999;
+  }
+}

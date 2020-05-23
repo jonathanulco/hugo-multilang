@@ -1,0 +1,17 @@
+{{ $paginator := .Paginate .Data.Pages }}
+<ul class="list-post top-list-post grid">
+    {{ range first 20 $paginator.Pages }}
+    <li>
+        <figure role="group">
+            {{ with .Resources.ByType "image" }} {{ range first 1 . }}<img src="{{ .Permalink }}" alt="">{{ end }} {{else}}
+            <img src="/assets/images/test-hero-zone.jpg" alt="illustration"> {{end}}
+            <figcaption>
+                <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            </figcaption>
+        </figure>
+    </li>
+    {{ end }}
+</ul>
+<div lang="en">
+    {{ template "_internal/pagination.html" . }}
+</div>

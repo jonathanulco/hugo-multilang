@@ -1,0 +1,13 @@
+
+<header role="banner" class="banner" id="banner">
+<div class="logo"><a href="/"><img src="/assets/images/logo.svg" alt="{{ T "logoTitle" }}" title="{{ T "logoTitle" }}"></a></div>
+{{ partial "navigation" .}}
+{{ if .IsTranslated }}
+  <ul class="nav-lang">
+    {{ range .Translations }}
+		<li><a href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">{{ .Language.Lang }}</a></li>
+	  {{ end}}
+  </ul>
+{{ end }}
+</header>
+<!--/banner-->

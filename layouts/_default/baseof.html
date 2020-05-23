@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ with .Language }}{{ . }}{{ else }}{{ .Site.LanguageCode }}{{ end }}">
+
+<head itemscope itemtype="http://schema.org/WebSite">
+  {{ hugo.Generator }}
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta name="robots" content="all" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ block "title" . }}{{ .Title }}{{ end }} | {{ .Site.Title }}</title>
+  {{- with .Description -}}
+  <meta name="description" content="{{ . }}">
+  {{- end -}}
+  <!-- // Meta -->
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/schema.html" . }}
+  <!-- // Informations -->
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ if .IsTranslated }}
+  {{ range .Translations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+  {{ end }}
+  {{ end }}
+  {{ if .Site.IsServer }}
+  {{ $cssOpts := (dict "targetPath" "/assets/css/framework.css" "enableSourceMap" true ) }}
+  {{ $styles := resources.Get "/scss/framework.scss" | toCSS $cssOpts }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+  {{ else }}
+  {{ $cssOpts := (dict "targetPath" "/assets/css/framework.css" ) }}
+  {{ $styles := resources.Get "/scss/framework.scss" | toCSS $cssOpts | postCSS (dict "config" "postcss.config.js") }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+  {{ end }}
+ 
+  {{ partialCached "favicon" . }}
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" class="t-{{ .Type }}{{ if .IsHome }} home{{ end }}">
+  <div class="skip-links">
+    <ul>
+      <li><a id="skip-to-navigation" href="#navigation">Navigation</a></li>
+      <li><a id="skip-to-main" href="#main">Contenu principal</a></li>
+    </ul>
+  </div>
+  {{ partialCached "header" . }}
+  <main id="main" class="page main" role="main">
+    {{ block "header" . }}{{ end }}
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partialCached "footer" .}}
+</body>
+{{ partialCached "scripts" .}}
+{{ template "_internal/google_analytics_async.html" . }}
+</html>

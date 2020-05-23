@@ -1,0 +1,234 @@
+////
+/// Very basic styles
+////
+
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  position: relative;
+}
+// Images
+// -------------------------
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  border: 0;
+}
+
+// We need to revert these for Google maps cause else it breaks!
+%img--no-max, .img--no-max {
+  max-width: none;
+}
+
+
+// Figures
+// -------------------------
+
+figure > img {
+  display: block;
+}
+
+figcaption {
+  font-size: $smaller;
+}
+
+// iFrame
+// -------------------------
+
+
+iframe, embed, object, video {
+  max-width: 100%;
+}
+
+// Links
+// -------------------------
+
+a {
+  transition: 1s ease all;
+  text-decoration: underline;
+  color: $link-color;
+  // &:visited {
+  //   color: $link-color;
+  // }
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    outline: thin dotted;
+  }
+  &:hover, &:active {
+    outline: none;
+  }
+}
+
+// Lists
+// -------------------------
+
+ul, ol {
+  margin-bottom: $base-line;
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+// List options
+// -------------------------
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  @extend .list-unstyled;
+
+   > li {
+    display: inline-block;
+    margin: 0 -5px 0 0;
+  }
+}
+
+// Description Lists
+// -------------------------
+
+dl {
+  margin-top: 0; // Remove browser default
+  margin-bottom: $base-line;
+}
+
+dt, dd {
+  line-height: $line-height-base;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0; // Undo browser default
+}
+
+// Blockquotes
+// -------------------------
+
+blockquote, blockquote p, q {
+  color:#fff;
+}
+blockquote {
+  margin: 0 auto 3rem;
+  padding: 1rem 0.5rem 1rem;
+  font-size: 0.95em;
+  letter-spacing: -1px;
+  border-radius: 2px;
+  background: $color-primary;
+  p {
+    position: relative;
+    margin: 1rem;
+    color:#fff;
+    &:before, &:after {
+      position: absolute;
+      height: 1em;
+      font-size: 2.5em;
+      opacity: 0.8;
+      color: $color-primary;
+    }
+    &:before {
+      content: '“';
+      top: -0.5em;
+      left: -0.5em;
+    }
+    &:after {
+      content: '”';
+      right: -0.5em;
+      bottom: -0.5em;
+    }
+  }
+  @media #{$small-up} {
+    & {
+      padding: 2rem 2rem 1rem;
+
+      p {
+        margin: 1rem 3rem 2.5rem;
+        &:before, &:after {
+          font-size: 4em;
+        }
+        &:before {
+          content: '“';
+          top: -0.5em;
+          left: -0.7em;
+        }
+        &:after {
+          content: '”';
+          right: -0.7em;
+          bottom: -0.5em;
+        }
+      }
+    }
+  }
+}
+blockquote cite {
+  display: block;
+  color: $color-grey;
+}
+
+blockquote cite:before {
+  content: '\2014 \0020';
+}
+
+blockquote cite a, blockquote cite a:visited {
+  color: $color-grey;
+}
+
+
+// Code formatting
+// -------------------------
+
+pre, code {
+  font-size: 15px;
+  border: 1px solid $color-grey;
+  border-radius: 3px;
+  background-color: #eef;
+}
+
+code {
+  padding: 1px 5px;
+}
+
+pre {
+  overflow-x: scroll;
+  padding: 8px 12px;
+   > code {
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+  }
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border: 1px solid #ccc;
+   > thead,  > tbody,  > tfoot {
+     > tr {
+       > th,  > td {
+        border: 1px solid #ccc;
+      }
+    }
+  }
+   > thead > tr {
+     > th,  > td {
+      border-bottom-width: 2px;
+    }
+  }
+}
